@@ -799,6 +799,27 @@ ciliumEndpointSlice:
   # identity groups together CiliumEndpoints that share the same identity.
   # fcfs groups together CiliumEndpoints in a first-come-first-serve basis, filling in the largest non-full slice first.
   sliceMode: identity
+# @schema
+# type: [null, array]
+# @schema
+# -- List of CiliumLoadBalancerIPPool to be created.
+# ref: https://docs.cilium.io/en/stable/network/lb-ipam/
+ciliumLoadBalancerIPPools: []
+# Example:
+# - name: blue-pool
+#   blocks:
+#     - cidr: "10.0.10.0/24"
+#     - start: "20.0.20.100"
+#       stop: "20.0.20.200"
+#   serviceSelector:
+#     matchExpressions:
+#       - {key: color, operator: In, values: [blue]}
+# - name: red-pool
+#   disabled: true
+#   allowFirstLastIPs: "No"
+#   blocks:
+#     - cidr: "30.100.20.0/24"
+
 envoyConfig:
   # -- Enable CiliumEnvoyConfig CRD
   # CiliumEnvoyConfig CRD can also be implicitly enabled by other options.

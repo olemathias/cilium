@@ -1,0 +1,12 @@
+{{- range .Values.ciliumLoadBalancerIPPools }}
+---
+apiVersion: "cilium.io/v2alpha1"
+kind: CiliumLoadBalancerIPPool
+metadata:
+  name: {{ .name | quote }}
+spec:
+  disabled: {{ .disabled | default "false" }}
+  serviceSelector: {{- .serviceSelector | default dict | toYaml | nindent 6 }}
+  blocks: {{- toYaml .blocks | nindent 6 }}
+  allowFirstLastIPs: {{ .allowFirstLastIPs | default "" | eq "" | ternary "" (.allowFirstLastIPs | quote) }}
+{{- end }}

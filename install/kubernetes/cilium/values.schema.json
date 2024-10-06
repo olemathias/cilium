@@ -780,6 +780,13 @@
       },
       "type": "object"
     },
+    "ciliumLoadBalancerIPPools": {
+      "items": {},
+      "type": [
+        "null",
+        "array"
+      ]
+    },
     "cleanBpfState": {
       "type": "boolean"
     },
